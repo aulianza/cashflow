@@ -14,15 +14,16 @@ class URLController extends CI_Controller {
             die();
         }
         $this->datasend['SESSION'] = $this->session;
-        
     }
 
     public function MasterUser() {
-        
+        $this->datasend['formid'] = 'home';
+        $this->datasend['content'] = '';
     }
 
     public function MasterRole() {
-        
+        $this->datasend['formid'] = 'home';
+        $this->datasend['content'] = '';
     }
 
 }
