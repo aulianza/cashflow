@@ -75,8 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=103.73.125.139)(PORT=1521))(CONNECT_DATA=(SID=IPLASPROD)))',
-	'username' => 'IPLASPROD',
+//	'hostname' => '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=103.73.125.139)(PORT=1521))(CONNECT_DATA=(SID=IPLASPROD)))',
+	'hostname' => '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.10.10.94)(PORT=1521))(CONNECT_DATA=(SID=KPNCORP)))',
+//	'username' => 'IPLASPROD',
+	'username' => 'KPNCORP',
 	'password' => 'sac',
 	'database' => '',
 	'dbdriver' => 'oci8',
