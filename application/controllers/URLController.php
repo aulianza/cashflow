@@ -23,17 +23,17 @@ class URLController extends CI_Controller {
         $this->load->view('template', $this->datasend);
     }
 
-    public function MasterUser() {
+    public function MstUser() {
         $this->datasend['formid'] = 'home';
-        $this->datasend['sidebar'] = '';
-        $this->datasend['content'] = '';
+        $this->datasend['sidebar'] = 'sidebar_view';
+        $this->datasend['content'] = 'MasterData/MstUser';
         $this->load->view('template', $this->datasend);
     }
 
-    public function MasterRole() {
+    public function MstRoleAccess() {
         $this->datasend['formid'] = 'home';
-        $this->datasend['sidebar'] = '';
-        $this->datasend['content'] = '';
+        $this->datasend['sidebar'] = 'sidebar_view';
+        $this->datasend['content'] = 'MasterData/MstRoleAccess';
         $this->load->view('template', $this->datasend);
     }
 

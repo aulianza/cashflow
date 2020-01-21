@@ -5,7 +5,7 @@
     <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
-        <title>iPlas | Integrated Plantation System</title>
+        <title>KPN CROP | Cash Flow System</title>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
@@ -183,14 +183,6 @@
             <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
             <!-- end scroll to top btn -->
         </div>
-        <!-- end page container -->
-        <?php
-        if (isset($content_js)) {
-            if (!empty($content_js)) {
-                $this->load->view($content_js);
-            }
-        }
-        ?>
 
     </body>
 </html>
