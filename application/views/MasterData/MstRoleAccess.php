@@ -190,7 +190,7 @@
             $('#USERGROUPNAME').val(data.USERGROUPNAME);
             $('#ISACTIVE').val(data.ISACTIVE);
             USERGROUPID = data.USERGROUPID;
-//            LoadDtAccess();
+            LoadDtAccess();
 //            $('#FAddEditForm').parsley().reset();
             ACTION = 'EDIT';
             $('.modal-footer .btn-success').text('Update');
