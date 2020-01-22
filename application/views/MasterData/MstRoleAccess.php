@@ -4,10 +4,3 @@
 </ol>
 <h1 class="page-header">Master Role Access</h1>
 
-
-
-<script>
-    $(document).ready(function () {
-        App.init();
-    });
-</script>

@@ -80,6 +80,11 @@
         <script src="<?php echo base_url() ?>/assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
         <script src="<?php echo base_url() ?>/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
         <script src="<?php echo base_url() ?>/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                App.init();
+            });
+        </script>
     </head>
     <body>
         <!-- begin #page-loader -->
