@@ -53,4 +53,5 @@ $route['default_controller'] = 'URLController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['IUsers/(:any)']['post'] = 'MasterData/MstUserController/$1';
+$route['IPermission/(:any)']['post'] = 'MasterData/PermissionController/$1';
 $route['(:any)'] = 'URLController/$1';
