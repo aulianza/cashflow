@@ -50,7 +50,7 @@ class PermissionController extends BaseController {
                 'STATUS' => FALSE,
                 'MESSAGE' => ''
             ];
-            $return = $this->MenuAccessModel->Save($param, $this->GetIpAddress());
+            $return = $this->PermissionModel->Save($param, $this->GetIpAddress());
             if ($return['STATUS'] == true) {
                 $this->resource = [
                     'status' => 200,

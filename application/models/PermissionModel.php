@@ -69,10 +69,10 @@ class PermissionModel extends CI_Model {
                         ->update($this->table);
             }
             $dtsub = [
-                'VIEWS' => 0,
-                'ADDS' => 0,
-                'EDITS' => 0,
-                'DELETES' => 0,
+                'FVIEW' => 0,
+                'FADD' => 0,
+                'FEDIT' => 0,
+                'FDELETE' => 0,
                 'FCEDIT' => $Data['USERNAME'],
                 'FCIP' => $Location
             ];
@@ -91,10 +91,10 @@ class PermissionModel extends CI_Model {
                 foreach ($Data['DATA'] as $dt) {
                     if ($dt['MENUCODE'] != NULL) {
                         $datadetail = [
-                            'VIEWS' => $dt['VIEWS'],
-                            'ADDS' => $dt['ADDS'],
-                            'EDITS' => $dt['EDITS'],
-                            'DELETES' => $dt['DELETES'],
+                            'FVIEW' => $dt['VIEWS'],
+                            'FADD' => $dt['ADDS'],
+                            'FEDIT' => $dt['EDITS'],
+                            'FDELETE' => $dt['DELETES'],
                             'FCEDIT' => $Data['USERNAME'],
                             'FCIP' => $Location
                         ];
@@ -162,10 +162,10 @@ class PermissionModel extends CI_Model {
                 if ($dt1 != $dt2) {
                     $dt1 = $dt2;
                     $datadetail = [
-                        'VIEWS' => 1,
-                        'ADDS' => 0,
-                        'EDITS' => 0,
-                        'DELETES' => 0,
+                        'FVIEW' => 1,
+                        'FADD' => 0,
+                        'FEDIT' => 0,
+                        'FDELETE' => 0,
                         'FCEDIT' => $USERNAME,
                         'FCIP' => $Location
                     ];

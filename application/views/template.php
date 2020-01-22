@@ -57,6 +57,7 @@
         <script src="<?php echo base_url() ?>/assets/plugins/js-cookie/js.cookie.js"></script>
         <script src="<?php echo base_url() ?>/assets/js/theme/default.min.js"></script>
         <script src="<?php echo base_url() ?>/assets/js/apps.min.js"></script>
+        <script src="<?php echo base_url() ?>/assets/plugins/parsley/dist/parsley.js"></script>
         <!-- ================== END BASE JS ================== -->
 
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
