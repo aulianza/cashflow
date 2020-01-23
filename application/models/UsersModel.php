@@ -31,62 +31,38 @@ class UsersModel extends CI_Model {
             $this->db->trans_begin();
             $result = FALSE;
             $dt = [
-                'NIK' => $Data['NIK'],
+                'FCPASSWORD' => $Data['FCPASSWORD'],
                 'FULLNAME' => $Data['FULLNAME'],
-                'EMAIL' => $Data['EMAIL'],
-                'PASSWORD' => $Data['PASSWORD'],
-                'ROLECODE' => $Data['ROLECODE'],
-                'PHONE' => $Data['PHONE'],
-                'COMPANYCODE' => $Data['COMPANYCODE'],
-                'BUSINESSCODE' => $Data['BUSINESSCODE'],
-                'DIVISIONCODE' => $Data['DIVISIONCODE'],
-                'SIGNATUR' => $Data['SIGNATUR'],
-                'FLAG_ACTIVE' => $Data['FLAG_ACTIVE'],
-                'UPDATED_BY' => $Data['USERNAMEUPDATE'],
-                'UPDATED_AT' => Carbon::now('Asia/Jakarta'),
-                'UPDATED_LOC' => $Location
+                'ISACTIVE' => $Data['ISACTIVE'],
+                'FCEDIT' => $Data['USERNAMEUPDATE'],
+                'FCIP' => $Location
             ];
-            if ($Data['COMPANYCODE'] == '' || $Data['COMPANYCODE'] == NULL) {
-                $dt['COMPANYCODE'] = NULL;
-            }
-            if ($Data['BUSINESSCODE'] == '' || $Data['BUSINESSCODE'] == NULL) {
-                $dt['BUSINESSCODE'] = NULL;
-            }
-            if ($Data['DIVISIONCODE'] == '' || $Data['DIVISIONCODE'] == NULL) {
-                $dt['DIVISIONCODE'] = NULL;
-            }
-            if ($Data['FLAG_ACTIVE'] == 1 && $Data['USERNAME'] != 'ADMIN') {
-                if ($Data['COMPANYCODE'] == '' || $Data['COMPANYCODE'] == NULL ||
-                        $Data['BUSINESSCODE'] == '' || $Data['BUSINESSCODE'] == NULL ||
-                        $Data['DIVISIONCODE'] == '' || $Data['DIVISIONCODE'] == NULL) {
-                    $dt['FLAG_ACTIVE'] = 2;
-                }
-            }
+            $result = $this->db->set('LASTUPDATE', "SYSDATE", false)
+                    ->set('VALID_FROM', "TO_DATE('" . $Data["VALID_FROM"] . "','YYYYMMDD')", false)
+                    ->set('VALID_UNTIL', "TO_DATE('" . $Data["VALID_UNTIL"] . "','YYYYMMDD')", false);
 
-            $SQL = "SELECT * FROM " . $this->table . " WHERE USERNAME = ?";
-            $Cek = $this->db->query($SQL, [strtoupper($Data['USERNAME'])]);
+            $SQL = "SELECT * FROM  $this->table  WHERE FCCODE = ?";
+            $Cek = $this->db->query($SQL, [strtoupper($Data['FCCODE'])]);
             if ($Data['ACTION'] == 'ADD') {
                 if ($Cek->num_rows() > 0) {
                     throw new Exception('Data Already Exists !!');
                 }
-                $dt['USERNAME'] = strtoupper($Data['USERNAME']);
-                $dt['PASSWORD'] = md5($Data['PASSWORD']);
-                $dt['CREATED_BY'] = $Data['USERNAMEUPDATE'];
-                $dt['CREATED_AT'] = Carbon::now('Asia/Jakarta');
-                $dt['CREATED_LOC'] = $Location;
-                $result = $this->db->set($dt)->insert($this->table);
+                $dt['FCCODE'] = strtoupper($Data['FCCODE']);
+                $dt['FCPASSWORD'] = md5($Data['FCPASSWORD']);
+                $dt['FCENTRY'] = $Data['USERNAMEUPDATE'];
+                $result = $result->set($dt)->insert($this->table);
             } elseif ($Data['ACTION'] == 'EDIT') {
                 if ($Cek->num_rows() <= 0) {
                     throw new Exception('Data Not Found !!');
                 } else {
                     foreach ($Cek->result() as $values) {
-                        if ($values->PASSWORD != $Data['PASSWORD']) {
-                            $dt['PASSWORD'] = md5($Data['PASSWORD']);
+                        if ($values->FCPASSWORD != $Data['FCPASSWORD']) {
+                            $dt['FCPASSWORD'] = md5($Data['FCPASSWORD']);
                         }
                     }
                 }
-                $result = $this->db->set($dt)
-                        ->where(['USERNAME' => strtoupper($Data['USERNAME'])])
+                $result = $result->set($dt)
+                        ->where(['FCCODE' => strtoupper($Data['FCCODE'])])
                         ->update($this->table);
             }
             if ($result) {

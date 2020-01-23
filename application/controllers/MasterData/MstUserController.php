@@ -26,4 +26,28 @@ class MstUserController extends BaseController {
         $this->SendResponse();
     }
 
+    public function Save() {
+        $param = $this->input->post();
+        try {
+            $return = [
+                'STATUS' => FALSE,
+                'MESSAGE' => ''
+            ];
+            $return = $this->UsersModel->Save($param, $this->GetIpAddress());
+            if ($return['STATUS'] == true) {
+                $this->resource = [
+                    'status' => 200,
+                    'data' => $return['MESSAGE']
+                ];
+            } else {
+                throw new Exception($return['MESSAGE']);
+            }
+        } catch (Exception $ex) {
+            $this->resource = array(
+                'status' => 500,
+                'data' => $ex->getMessage()
+            );
+        }
+        $this->SendResponse();
+    }
 }
