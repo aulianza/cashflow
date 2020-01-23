@@ -26,7 +26,7 @@ class PermissionModel extends CI_Model {
     }
 
     public function GetListAccess($USERGROUPID) {
-        $this->fillable = 'mu.MENUCODE, mu.MENUNAME, mu.MENUPARENT, mp.MENUNAME  AS MENUPARENTNAME, NVL(ra.FVIEW, 0) AS VIEWS, 
+        $this->fillable = 'mu.MENUCODE, mu.MENUNAME, mu.MENUPARENT, mp.MENUNAME  AS MENUPARENTNAME, NVL(ra.FVIEW, 0) AS FVIEW, 
                            NVL(ra.FADD, 0) AS ADDS, NVL(ra.FEDIT, 0) AS EDITS, NVL(ra.FDELETE, 0) AS DELETES';
         $SQL = "SELECT $this->fillable
                   FROM $this->tableM mu
@@ -91,7 +91,7 @@ class PermissionModel extends CI_Model {
                 foreach ($Data['DATA'] as $dt) {
                     if ($dt['MENUCODE'] != NULL) {
                         $datadetail = [
-                            'FVIEW' => $dt['VIEWS'],
+                            'FVIEW' => $dt['FVIEW'],
                             'FADD' => $dt['ADDS'],
                             'FEDIT' => $dt['EDITS'],
                             'FDELETE' => $dt['DELETES'],
@@ -112,7 +112,7 @@ class PermissionModel extends CI_Model {
                             $resdetail = $this->db->set($datadetail)->set('LASTUPDATE', "SYSDATE", false)->insert($this->tableA);
                         }
                         if ($resdetail) {
-                            if ($dt['MENUPARENT'] != 0 && $dt['VIEWS'] == 1) {
+                            if ($dt['MENUPARENT'] != 0 && $dt['FVIEW'] == 1) {
                                 array_push($datsub, $dt['MENUPARENT']);
                             }
                         } else {
@@ -200,6 +200,57 @@ class PermissionModel extends CI_Model {
         } catch (Exception $ex) {
             return FALSE;
         }
+    }
+
+    public function GetMenu($USERGROUPID) {
+        try {
+            $html = '';
+            $SQL = "SELECT ma.MENUCODE, ma.MENUNAME, ma.MENUPARENT, ma.MUNELINK, ma.ICON 
+                      FROM $this->tableM ma 
+                     INNER JOIN $this->tableA ua 
+                             ON ua.MENUCODE = ma.MENUCODE AND ua.USERGROUPID = ? AND ua.FVIEW = 1
+                     WHERE ma.ISACTIVE = 1 AND ma.MENUPARENT = ?
+                     ORDER BY ma.IDX";
+            $menu = $this->db->query($SQL, [$USERGROUPID, 0])->result();
+            if (count($menu) > 0) {
+                foreach ($menu as $men) {
+                    $menusub = $this->db->query($SQL, [$USERGROUPID, $men->MENUCODE])->result();
+                    if (count($menusub) > 0) {
+                        $html .= '<li id="' . $men->MENUCODE . '" class="nav-item dropdown">
+                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="' . $men->ICON . '"></i> ' . $men->MENUNAME . '</a>
+                                  <ul id="' . $men->MENUCODE . '" class="dropdown-menu">';
+                        $parent = $this->GetMenuNext($menusub, $SQL, $USERGROUPID);
+                        $html .= $parent . '</ul></li>';
+                    } else {
+                        $html .= '<li id="' . $men->MENUCODE . '" class="nav-item">
+                                  <a href="' . site_url($men->MUNELINK) . '" class="nav-link"><i class="' . $men->ICON . '"></i> ' . $men->MENUNAME . '</a>
+                                  </li>';
+                    }
+                }
+            }
+            return $html;
+        } catch (Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function GetMenuNext($menusub, $SQL, $USERGROUPID) {
+        $parentHtml = '';
+        foreach ($menusub as $menu) {
+            $menusubdetail = $this->db->query($SQL, [$USERGROUPID, $menu->MENUCODE])->result();
+            if (count($menusubdetail) > 0) {
+                $parentHtml .= '<li id="' . $menu->MENUCODE . '" class="dropdown-submenu" data-target="' . $menu->MENUPARENT . '">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-toggle="dropdown"><i class="' . $menu->ICON . '"></i> ' . $menu->MENUNAME . '</a>
+                                <ul id="' . $menu->MENUCODE . '" class="dropdown-menu">';
+                $parent = $this->GetMenuNext($menusubdetail, $SQL, $USERGROUPID);
+                $parentHtml .= $parent . '</ul></li>';
+            } else {
+                $parentHtml .= '<li><a id="' . $menu->MENUCODE . '" href="' . site_url($menu->MUNELINK) . '" class="dropdown-item" data-target="' . $menu->MENUPARENT . '">
+                                <i class="' . $menu->ICON . '"></i> ' . $menu->MENUNAME . '
+                                </a></li>';
+            }
+        }
+        return $parentHtml;
     }
 
 }

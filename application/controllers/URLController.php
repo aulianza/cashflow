@@ -13,7 +13,9 @@ class URLController extends CI_Controller {
 //            redirect(site_url("login"));
 //            die();
 //        }
+        $this->load->model('PermissionModel');
         $this->datasend['SESSION'] = $this->session;
+        $this->datasend['Menu'] = $this->PermissionModel->GetMenu(1);
     }
 
     public function index() {
