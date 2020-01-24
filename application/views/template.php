@@ -12,76 +12,41 @@
         <meta content="" name="author" />
         <!-- ================== BEGIN BASE CSS STYLE ================== -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/font-awesome/5.0/css/fontawesome-all.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/animate/animate.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/css/default/style.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/css/default/style-responsive.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/css/default/theme/default.css" rel="stylesheet" id="theme" />
+        <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+        <link href="plugins/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="plugins/font-awesome/5.3/css/all.min.css" rel="stylesheet" />
+        <link href="plugins/animate/animate.min.css" rel="stylesheet" />
+        <link href="css/default/style.min.css" rel="stylesheet" />
+        <link href="css/default/style-responsive.min.css" rel="stylesheet" />
+        <link href="css/default/theme/default.css" rel="stylesheet" id="theme" />
         <!-- ================== END BASE CSS STYLE ================== -->
-
         <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-        <link href="<?php echo base_url() ?>/assets/plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/bootstrap-combobox/css/bootstrap-combobox.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+        <link href="plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+	<link href="plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
         <!-- ================== END PAGE LEVEL STYLE ================== -->
 
-        <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-        <link href="<?php echo base_url() ?>/assets/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/DataTables/extensions/AutoFill/css/autoFill.bootstrap.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet" />
-        <link href="<?php echo base_url() ?>/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
-        <!-- ================== END PAGE LEVEL STYLE ================== -->
-
-        <link href="<?= base_url() ?>assets/fonts/aulianza-sans/aulianza-sans.css" rel="stylesheet">
-
         <!-- ================== BEGIN BASE JS ================== -->
-        <script src="<?php echo base_url() ?>/assets/plugins/pace/pace.min.js"></script>
-        <!-- ================== END BASE JS ================== -->
-
-        <!-- ================== BEGIN BASE JS ================== -->
-        <script src="<?php echo base_url() ?>/assets/plugins/jquery/jquery-3.2.1.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+        <script src="plugins/pace/pace.min.js"></script>
+        <script src="plugins/jquery/jquery-3.3.1.min.js"></script>
+        <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
         <!--[if lt IE 9]>
-                <script src="<?php echo base_url() ?>/assets/crossbrowserjs/html5shiv.js"></script>
-                <script src="<?php echo base_url() ?>/assets/crossbrowserjs/respond.min.js"></script>
-                <script src="<?php echo base_url() ?>/assets/crossbrowserjs/excanvas.min.js"></script>
+                <script src="crossbrowserjs/html5shiv.js"></script>
+                <script src="crossbrowserjs/respond.min.js"></script>
+                <script src="crossbrowserjs/excanvas.min.js"></script>
         <![endif]-->
-        <script src="<?php echo base_url() ?>/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/js-cookie/js.cookie.js"></script>
-        <script src="<?php echo base_url() ?>/assets/js/theme/default.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/js/apps.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/parsley/dist/parsley.js"></script>
+        <script src="plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="plugins/js-cookie/js.cookie.js"></script>
+        <script src="js/theme/default.min.js"></script>
+        <script src="js/apps.min.js"></script>
         <!-- ================== END BASE JS ================== -->
-
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-        <script src="<?php echo base_url() ?>/assets/plugins/gritter/js/jquery.gritter.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/bootstrap-sweetalert/sweetalert.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/flot/jquery.flot.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/flot/jquery.flot.time.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/flot/jquery.flot.resize.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/flot/jquery.flot.pie.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/sparkline/jquery.sparkline.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/select2/dist/js/select2.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/js/demo/dashboard.min.js"></script>
+	<script src="plugins/DataTables/media/js/jquery.dataTables.js"></script>
+	<script src="plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+	<script src="plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
         <!-- ================== END PAGE LEVEL JS ================== -->	
 
-        <script src="<?php echo base_url() ?>/assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
-        <script src="<?php echo base_url() ?>/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
-        <script type="text/javascript">
+        <script>
             $(document).ready(function () {
                 App.init();
             });

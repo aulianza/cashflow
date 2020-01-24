@@ -7,11 +7,3 @@
 <!-- begin page-header -->
 <h1 class="page-header">Dashboard <small>Coroporate Management System</small></h1>
 <!-- end page-header -->
-
-
-
-<script>
-    $(document).ready(function () {
-        App.init();
-    });
-</script>
