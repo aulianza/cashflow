@@ -216,14 +216,21 @@ class PermissionModel extends CI_Model {
                 foreach ($menu as $men) {
                     $menusub = $this->db->query($SQL, [$USERGROUPID, $men->MENUCODE])->result();
                     if (count($menusub) > 0) {
-                        $html .= '<li id="' . $men->MENUCODE . '" class="nav-item dropdown">
-                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="' . $men->ICON . '"></i> ' . $men->MENUNAME . '</a>
-                                  <ul id="' . $men->MENUCODE . '" class="dropdown-menu">';
+                        $html .= '<li id="' . $men->MENUCODE . '" class = "has-sub">
+                                     <a href = "javascript:;">
+                                        <b class = "caret"></b>
+                                        <i class = "' . $men->ICON . '"></i>
+                                        <span>' . $men->MENUNAME . '</span>
+                                     </a>
+                                     <ul id="' . $men->MENUCODE . '" class = "sub-menu">';
                         $parent = $this->GetMenuNext($menusub, $SQL, $USERGROUPID);
                         $html .= $parent . '</ul></li>';
                     } else {
-                        $html .= '<li id="' . $men->MENUCODE . '" class="nav-item">
-                                  <a href="' . site_url($men->MUNELINK) . '" class="nav-link"><i class="' . $men->ICON . '"></i> ' . $men->MENUNAME . '</a>
+                        $html .= '<li id="' . $men->MENUCODE . '">
+                                     <a href="' . site_url($men->MUNELINK) . '">
+                                         <i class="' . $men->ICON . '"></i> 
+                                         <span>' . $men->MENUNAME . '</span> 
+                                     </a>
                                   </li>';
                     }
                 }

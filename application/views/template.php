@@ -44,6 +44,7 @@
 	<script src="plugins/DataTables/media/js/jquery.dataTables.js"></script>
 	<script src="plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
 	<script src="plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+        <script src="plugins/parsley/dist/parsley.js"></script>
         <!-- ================== END PAGE LEVEL JS ================== -->	
 
         <script>
