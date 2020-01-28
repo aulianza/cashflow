@@ -9,10 +9,10 @@ class URLController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->datasend = [];
-//        if ($this->session->userdata('status') <> 'login') {
-//            redirect(site_url("login"));
-//            die();
-//        }
+        if ($this->session->userdata('status') <> 'login') {
+            redirect(site_url("login"));
+            die();
+        }
         $this->load->model('PermissionModel');
         $this->datasend['SESSION'] = $this->session;
         $this->datasend['Menu'] = $this->PermissionModel->GetMenu(1);

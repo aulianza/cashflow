@@ -4,8 +4,9 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+    <base href="<?php echo site_url('/'); ?>">
     <meta charset="utf-8" />
-    <title>iPlas | Login Page</title>
+    <title>KPN CROP | Cash Flow System</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />

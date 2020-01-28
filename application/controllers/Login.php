@@ -7,12 +7,14 @@ class Login extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Login_model');
-        $this->load->library('session');
-        $this->load->helper('url');
     }
 
     public function index() {
-        $this->load->view('login_view');
+        if ($this->session->userdata('status') <> 'login') {
+            $this->load->view('login_view');
+        } else {
+            redirect(site_url("/"));
+        }
     }
 
     function aksi_login() {
@@ -29,7 +31,7 @@ class Login extends CI_Controller {
         } else {
             if ($username == $cek->FCCODE && md5($password) == $cek->FCPASSWORD) {
                 $this->set_session($cek);
-                redirect(site_url('Welcome'));
+                redirect(site_url('/'));
             } else {
                 echo "Username dan password salah !";
             }
